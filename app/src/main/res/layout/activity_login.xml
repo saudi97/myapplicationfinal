@@ -10,49 +10,45 @@
     tools:context=".login">
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="410dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/rmote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="597dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="111dp"
+        android:layout_marginEnd="178dp"
+        android:layout_marginRight="178dp"
+        android:layout_marginBottom="577dp"
         android:gravity="center"
         android:text="REMOTE CONTROL"
         android:textColor="#2196F3"
-        android:textSize="34sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="132dp"
         android:layout_height="36dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
         android:layout_marginEnd="261dp"
         android:layout_marginRight="261dp"
         android:layout_marginBottom="434dp"
-        android:gravity="left"
+        android:gravity="center"
         android:text="Password"
         android:textColor="#4F81BD   "
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
@@ -64,10 +60,11 @@
         android:background="#4F81BD"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        tools:ignore="InvalidId" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_alignParentEnd="true"
@@ -83,26 +80,22 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="132dp"
-        android:layout_height="36dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginEnd="261dp"
-        android:layout_marginRight="261dp"
-        android:layout_marginBottom="488dp"
-        android:gravity="left"
+        android:layout_marginEnd="286dp"
+        android:layout_marginRight="286dp"
+        android:layout_marginBottom="483dp"
+        android:gravity="center"
         android:text="Email"
         android:textColor="#4F81BD   "
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_alignParentEnd="true"
@@ -115,11 +108,10 @@
         android:textColor="#FF0000"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:backgroundTint="#FFCC33"
-        style="?android:attr/borderlessButtonStyle"/>
+        app:backgroundTint="#FFCC33" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_alignParentStart="true"
@@ -136,8 +128,7 @@
         android:textColor="#FF0000"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:backgroundTint="#FFCC33 "
-        style="?android:attr/borderlessButtonStyle"/>
+        app:backgroundTint="#FFCC33 " />
 
     <TextView
         android:id="@+id/textView8"
