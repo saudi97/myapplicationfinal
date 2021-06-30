@@ -24,4 +24,5 @@ ContactModel(String name,String number){
     public void setNumber(String number) {
         this.number = number;
     }
+      
 }
