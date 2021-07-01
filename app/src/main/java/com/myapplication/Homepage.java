@@ -11,6 +11,7 @@ import android.widget.Button;
 
 public class Homepage extends AppCompatActivity {
 Button call,contacts;
+    String mail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +21,15 @@ Button call,contacts;
         setContentView(R.layout.activity_homepage);
         call = (Button) findViewById(R.id.CallLogs);
         contacts = (Button) findViewById(R.id.Contacts);
+        Intent intent = getIntent();
+       mail=intent.getStringExtra("mail");
+        System.out.println(mail);
         call.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                System.out.println( mail);
                 Intent i = new Intent(getApplicationContext(),ShowCallLogs.class);
+                i.putExtra("mail",mail);
                 startActivity(i);
             }
 
@@ -33,6 +39,7 @@ Button call,contacts;
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),fetch_contacts.class);
+                i.putExtra("mail",mail);
                 startActivity(i);
             }
         });

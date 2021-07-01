@@ -38,9 +38,12 @@ private FirebaseAuth mauth=FirebaseAuth.getInstance();
 
             @Override
             public void onClick(View v) {
+
                 if(email.getText().toString().isEmpty()||pass.getText().toString().isEmpty()||passconfirm.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),"Provide Email, password and confirm password",Toast.LENGTH_LONG).show();
-                }else if(pass.getText().toString().isEmpty()!=passconfirm.getText().toString().isEmpty()){
+                }else if(email.getText().toString().contains("$")&&email.getText().toString().contains("/")&&email.getText().toString().contains("#")&&email.getText().toString().contains("[")&&email.getText().toString().contains("]")){
+Toast.makeText(getApplicationContext(),"Email Cannot contain ., $, #, [, ], /,",Toast.LENGTH_LONG).show();
+                }else  if(pass.getText().toString().isEmpty()!=passconfirm.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),"Password does not Match",Toast.LENGTH_LONG).show();
                 }else if(!(email.getText().toString().isEmpty())||!(pass.getText().toString().isEmpty())||!(passconfirm.getText().toString().isEmpty())){
                     mauth.createUserWithEmailAndPassword(email.getText().toString(),pass.getText().toString()).addOnSuccessListener(
@@ -51,6 +54,8 @@ private FirebaseAuth mauth=FirebaseAuth.getInstance();
                                     Toast.makeText(getApplicationContext(),
                                             "Signed Up successfully", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(getApplicationContext(),Homepage.class);
+                                    String mail=mauth.getCurrentUser().getEmail();
+                                    i.putExtra("mail",mail);
                                     startActivity(i);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {

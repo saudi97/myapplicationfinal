@@ -1,6 +1,7 @@
 package com.myapplication;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -29,12 +30,13 @@ public class fetch_contacts extends AppCompatActivity {
     ArrayList<ContactModel> arrayList=new ArrayList<ContactModel>();
     MainAdapter adapter;
     int index=0;
+    String mail="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch_contacts);
-
-        //assign variable
+Intent i = getIntent();
+mail= i.getStringExtra("mail");        //assign variable
         recyclerview=findViewById(R.id.recycler_view);
         //Check permission
         checkPermission();
@@ -131,21 +133,23 @@ public class fetch_contacts extends AppCompatActivity {
     }
     private void SendDataToServer(ContactModel contactItem) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Contacts")
-                .child(getDeviceName().replace('-','a')).child(String.valueOf(index));
+        DatabaseReference myRef = database.getReference(getEmail())
+                .child("Contacts").child(String.valueOf(index));
         myRef.setValue(contactItem);
-
 
     }
 
-    public String getDeviceName() {
-        String manufacturer = Build.MANUFACTURER;
-        String model = Build.MODEL;
-        if (model.startsWith(manufacturer)) {
-            return capitalize(model);
-        } else {
-            return capitalize(manufacturer) + " " + model;
+    public String getEmail() {
+
+        if(mail.contains(".")){
+            mail=mail.replace(".","a");
         }
+        if(mail.contains("#")){
+            mail=mail.replaceAll("#","h");
+        } if(mail.contains("$")){
+            mail=mail.replaceAll("$","d");
+        }
+        return mail;
     }
 
     private String capitalize(String s) {

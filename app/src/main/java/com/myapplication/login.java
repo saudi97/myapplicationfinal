@@ -3,6 +3,7 @@ package com.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.savedstate.SavedStateRegistryOwner;
 
 import android.content.Context;
 import android.content.Intent;
@@ -63,8 +64,12 @@ public class login extends AppCompatActivity {
                                         //  mProgressDialog.dismiss();
                                         Toast.makeText(getApplicationContext(),
                                                 "Signed In successfully", Toast.LENGTH_SHORT).show();
+                                        System.out.println(mAuth.getCurrentUser().getEmail());
+
                                         Intent i = new Intent(getApplicationContext(),Homepage.class);
-                                        startActivity(i);
+                                 String mail=  mAuth.getCurrentUser().getEmail();
+                                 i.putExtra("mail",mail);
+                                 startActivity(i);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                             @Override

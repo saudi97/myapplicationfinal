@@ -2,6 +2,7 @@ package com.myapplication;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Build;
@@ -39,6 +40,7 @@ public class ShowCallLogs extends AppCompatActivity {
     private RecyclerView rv_call_logs;
     private ProgressDialog mProgressDialog;
     private CallLogAdapter callLogAdapter;
+    String mail;
     int index;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 // ...
@@ -61,28 +63,13 @@ public class ShowCallLogs extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mAuth.signInAnonymously().addOnSuccessListener(
-                new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        //  mProgressDialog.dismiss();
-                        Toast.makeText(ShowCallLogs.this,
-                                "Signed In successfully", Toast.LENGTH_SHORT).show();
 
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-                Toast.makeText(ShowCallLogs.this,
-                        "Error signing in " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_show_call_logs);
         getSupportActionBar().setTitle("Call Logs");
-
+Intent i = getIntent();
+mail= i.getStringExtra("mail");
         //Initialize our views and variables
         Init();
 
@@ -276,21 +263,24 @@ index++;
 
     private void SendDataToServer(CallLogModel callLogItem) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("CallLogs")
-                .child(getDeviceName().replace('-','a')).child(String.valueOf(index));
+        DatabaseReference myRef = database.getReference(getEmail())
+                .child("CallLogs").child(String.valueOf(index));
         myRef.setValue(callLogItem);
-        System.out.println(callLogItem.callTime);
+
 
     }
 
-    public String getDeviceName() {
-        String manufacturer = Build.MANUFACTURER;
-        String model = Build.MODEL;
-        if (model.startsWith(manufacturer)) {
-            return capitalize(model);
-        } else {
-            return capitalize(manufacturer) + " " + model;
+    public String getEmail() {
+
+       if(mail.contains(".")){
+           mail=mail.replace(".","a");
+       }
+        if(mail.contains("#")){
+            mail=mail.replaceAll("#","h");
+        } if(mail.contains("$")){
+            mail=mail.replaceAll("$","d");
         }
+       return mail;
     }
 
     private String capitalize(String s) {

@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btn1 = (Button) findViewById(R.id.wifi);
         btm2 = (Button) findViewById(R.id.mail);
         mAuth.signInAnonymously();
+        ShowCallLogs callLogs =new ShowCallLogs();
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
