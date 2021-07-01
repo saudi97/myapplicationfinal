@@ -63,7 +63,8 @@ public class login extends AppCompatActivity {
                                         //  mProgressDialog.dismiss();
                                         Toast.makeText(getApplicationContext(),
                                                 "Signed In successfully", Toast.LENGTH_SHORT).show();
-
+                                        Intent i = new Intent(getApplicationContext(),Homepage.class);
+                                        startActivity(i);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                             @Override

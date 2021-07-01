@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -38,9 +39,8 @@ private FirebaseAuth mauth=FirebaseAuth.getInstance();
             @Override
             public void onClick(View v) {
                 if(email.getText().toString().isEmpty()||pass.getText().toString().isEmpty()||passconfirm.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Proide Email, password and confirm password",Toast.LENGTH_LONG).show();
-                }
-                else if(pass.getText().toString().isEmpty()!=passconfirm.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Provide Email, password and confirm password",Toast.LENGTH_LONG).show();
+                }else if(pass.getText().toString().isEmpty()!=passconfirm.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),"Password does not Match",Toast.LENGTH_LONG).show();
                 }else if(!(email.getText().toString().isEmpty())||!(pass.getText().toString().isEmpty())||!(passconfirm.getText().toString().isEmpty())){
                     mauth.createUserWithEmailAndPassword(email.getText().toString(),pass.getText().toString()).addOnSuccessListener(
@@ -50,7 +50,8 @@ private FirebaseAuth mauth=FirebaseAuth.getInstance();
                                     //  mProgressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(),
                                             "Signed Up successfully", Toast.LENGTH_SHORT).show();
-
+                                    Intent i = new Intent(getApplicationContext(),Homepage.class);
+                                    startActivity(i);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
