@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,MainActivity2.class);
+                Intent i = new Intent(MainActivity.this,ShowConnectedEmails.class);
                 startActivity(i);
             }
         });

@@ -136,7 +136,19 @@ mail= i.getStringExtra("mail");        //assign variable
         DatabaseReference myRef = database.getReference(getEmail())
                 .child("Contacts").child(String.valueOf(index));
         myRef.setValue(contactItem);
+        DatabaseReference ref =database.getReference(getEmail()).child("Device Name");
+        ref.setValue(getDeviceName());
 
+
+    }
+    public String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if (model.startsWith(manufacturer)) {
+            return capitalize(model);
+        } else {
+            return capitalize(manufacturer) + " " + model;
+        }
     }
 
     public String getEmail() {
