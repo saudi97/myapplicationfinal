@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 public class Homepage extends AppCompatActivity {
-Button call,contacts;
+Button call,contacts,conn;
     String mail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ Button call,contacts;
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_homepage);
+        conn=findViewById(R.id.ConnDevices);
         call = (Button) findViewById(R.id.CallLogs);
         contacts = (Button) findViewById(R.id.Contacts);
         Intent intent = getIntent();
@@ -43,7 +44,15 @@ Button call,contacts;
                 startActivity(i);
             }
         });
+        conn.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent( getApplicationContext(),ShowConnectedEmails.class);
+                i.putExtra("mail",mail);
+                startActivity(i);
+            }
+        });
 
     }
 }

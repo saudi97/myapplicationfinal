@@ -172,7 +172,7 @@ mail= i.getStringExtra("mail");
         index=0;
         //looping through the cursor to add data into arraylist
         while (cursor.moveToNext()){
-index++;
+            index++;
             str_number = cursor.getString(cursor.getColumnIndex(CallLog.Calls.NUMBER));
             str_contact_name = cursor.getString(cursor.getColumnIndex(CallLog.Calls.CACHED_NAME));
             str_contact_name = str_contact_name==null || str_contact_name.equals("") ? "Unknown" : str_contact_name;
