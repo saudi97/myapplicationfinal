@@ -22,14 +22,14 @@
         app:layout_constraintTop_toBottomOf="@+id/DeviceName"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
+    <TextView
         android:id="@+id/Sno"
         android:layout_width="53dp"
         android:layout_height="36dp"
         android:ems="10"
-        android:inputType="number"
         android:text="1"
-        android:textSize="15dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/DeviceName"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="61dp"
         android:layout_height="36dp"
@@ -86,9 +86,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="Share"
         android:textSize="14dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DeviceName" />
 
@@ -117,7 +117,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Contacts"
-        app:layout_constraintVertical_bias="0.371"
+        app:layout_constraintVertical_bias="0.714"
         tools:ignore="UnknownId" />
 
     <CheckBox
