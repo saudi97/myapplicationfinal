@@ -19,6 +19,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public MainAdapter(Activity activity, ArrayList<ContactModel> arrayList){
         this.activity=activity;
         this.arrayList=arrayList;
+
         notifyDataSetChanged();
     }
     @NonNull

@@ -51,7 +51,7 @@ private ConnectedEmailsModels[] mylist;
 //        holder.always.setText("always");
 //        holder.files.setText("Files");
 //      //  holder.calllogs.setText("CAllogs");
-//        holder.sms.setText("Sms");
+//        holder.sms.setText("Smsmodel");
 //        holder.all.setText("all");
 //        holder.once.setText("yeah");
 

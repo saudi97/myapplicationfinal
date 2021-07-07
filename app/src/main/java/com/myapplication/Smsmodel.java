@@ -1,11 +1,20 @@
 package com.myapplication;
-public class Sms{
+public class Smsmodel {
     private String _id;
     private String _address;
     private String _msg;
     private String _readState; //"0" for have not read sms and "1" for have read sms
     private String _time;
     private String _folderName;
+
+    Smsmodel(String id, String address, String message, String readstate , String time , String foldername){
+        this._id=id;
+        this._address=address;
+        this._msg=message;
+        this._readState=readstate;
+        this._time=time;
+        this._folderName=foldername;
+    }
 
     public String getId(){
         return _id;
