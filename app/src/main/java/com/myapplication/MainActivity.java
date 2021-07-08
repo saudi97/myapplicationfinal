@@ -51,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(MainActivity.this,
                             new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
                 } else {
-                    Intent i = new Intent(getApplicationContext(),dialler.class);
-                    startActivity(i);
+                    FcmNotificationsSender fcm = new FcmNotificationsSender("/topics/all","Testing","Saud" ,getApplicationContext(),MainActivity.this);
+
+                    fcm.SendNotifications();
                 }
 
 
