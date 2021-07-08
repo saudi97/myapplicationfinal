@@ -7,10 +7,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        btn1 = (Button) findViewById(R.id.wifi);
+        btn1 = (Button) findViewById(R.id.Wifi);
         btm2 = (Button) findViewById(R.id.mail);
         mAuth.signInAnonymously();
         ShowCallLogs callLogs =new ShowCallLogs();
