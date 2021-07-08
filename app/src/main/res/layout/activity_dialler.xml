@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFCC33"
         android:gravity="bottom"
         android:orientation="vertical">
 
@@ -25,11 +26,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:ems="10"
                 android:background="@drawable/rounded"
                 android:drawableLeft="@drawable/ic_call"
+                android:ems="10"
                 android:hint="@string/hint"
                 android:inputType="none"
+                android:focusableInTouchMode="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -58,36 +60,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="one"
                 android:text="@string/one"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="one"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttontwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="two"
                 android:text="@string/two"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="two"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttonthree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="three"
                 android:text="@string/three"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="three"/>
+                app:backgroundTint="#FFCC33" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,36 +103,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="four"
                 android:text="@string/four"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="four"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttonfive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="five"
                 android:text="@string/five"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="five"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttonsix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="six"
                 android:text="@string/six"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="six"/>
+                app:backgroundTint="#FFCC33" />
         </LinearLayout>
 
         <LinearLayout
@@ -144,36 +146,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="seven"
                 android:text="@string/seven"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="seven"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttoneight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="eight"
                 android:text="@string/eight"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="eight"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttonnine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="nine"
                 android:text="@string/nine"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="nine"/>
+                app:backgroundTint="#FFCC33" />
         </LinearLayout>
 
         <LinearLayout
@@ -187,36 +189,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="star"
                 android:text="@string/star"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="star"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttonzero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="zero"
                 android:text="@string/zero"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="zero"/>
+                app:backgroundTint="#FFCC33" />
 
             <Button
                 android:id="@+id/buttonhash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="hash"
                 android:text="@string/hashtag"
                 android:textColor="#000000"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFCC33"
-                android:onClick="hash"/>
+                app:backgroundTint="#FFCC33" />
 
         </LinearLayout>
 
@@ -231,11 +233,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="call"
                 android:text="@string/call"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:backgroundTint="#10FF00"
-                android:onClick="call"/>
+                app:backgroundTint="#10FF00" />
         </LinearLayout>
     </LinearLayout>
 
