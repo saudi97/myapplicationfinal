@@ -17,10 +17,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Signup extends AppCompatActivity {
 EditText email,pass,passconfirm;
 Button signup;
+String token;
 private FirebaseAuth mauth=FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +57,10 @@ Toast.makeText(getApplicationContext(),"Email Cannot contain ., $, #, [, ], /,",
                                             "Signed Up successfully", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(getApplicationContext(),Homepage.class);
                                     String mail=mauth.getCurrentUser().getEmail();
+                                    Registerandgettoken();
                                     i.putExtra("mail",mail);
                                     startActivity(i);
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -71,5 +75,11 @@ Toast.makeText(getApplicationContext(),"Email Cannot contain ., $, #, [, ], /,",
         });
 
 
+    }
+
+
+    public void Registerandgettoken(){
+        token = FirebaseMessaging.getInstance().getToken().toString();
+        System.out.println("haehahskl"+token);
     }
 }
