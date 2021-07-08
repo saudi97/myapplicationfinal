@@ -17,6 +17,7 @@ Button call,contacts,conn,connect;
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_homepage);
         conn=findViewById(R.id.ConnDevices);
         connect = (Button) findViewById(R.id.button2);
