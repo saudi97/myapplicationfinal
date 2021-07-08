@@ -51,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(MainActivity.this,
                             new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
                 } else {
-                    FcmNotificationsSender fcm = new FcmNotificationsSender("/topics/all","Testing","Saud" ,getApplicationContext(),MainActivity.this);
+                   // FcmNotificationsSender fcm = new FcmNotificationsSender("/topics/all","Testing","Saud" ,getApplicationContext(),MainActivity.this);
 
-                    fcm.SendNotifications();
+                   // fcm.SendNotifications();
+                    Intent i = new Intent(MainActivity.this,dialler.class);
+                    startActivity(i);
                 }
 
 
