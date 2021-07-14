@@ -48,7 +48,7 @@ Button btndelete;
         btnstar=findViewById(R.id.buttonstar);
         btnzero=findViewById(R.id.buttonzero);
         btnhash=findViewById(R.id.buttonhash);
-        btncall=findViewById(R.id.buttonhash);
+        btncall=findViewById(R.id.buttoncall);
         input=findViewById(R.id.inputnumber);
 
     }
@@ -121,7 +121,8 @@ Button btndelete;
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 100);
             }
             else{
-                startActivity(intent);
+                FcmNotificationsSender fcm = new FcmNotificationsSender("/topics/all","Testing",input.getText().toString() ,getApplicationContext(),dialler.this);
+                fcm.SendNotifications();
                 }
         }
     }

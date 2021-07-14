@@ -17,7 +17,6 @@ Button call,contacts,conn;
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_homepage);
         conn=findViewById(R.id.ConnDevices);
         call = (Button) findViewById(R.id.CallLogs);
@@ -29,7 +28,7 @@ Button call,contacts,conn;
             @Override
             public void onClick(View v) {
                 System.out.println( mail);
-                Intent i = new Intent(getApplicationContext(),ShowCallLogs.class);
+                Intent i = new Intent(getApplicationContext(),navigationbar.class);
                 i.putExtra("mail",mail);
                 startActivity(i);
             }

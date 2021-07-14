@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".dialler"></activity>
+        <activity android:name=".database_contact"></activity>
+        <activity android:name=".dialler" />
+        <activity android:name=".navigationbar" />
         <activity android:name=".ShowMessages" />
         <activity android:name=".ShowConnectedEmails" />
         <activity android:name=".Homepage" />
