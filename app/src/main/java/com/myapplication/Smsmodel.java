@@ -1,58 +1,38 @@
 package com.myapplication;
 public class Smsmodel {
-    private String _id;
-    private String _address;
-    private String _msg;
-    private String _readState; //"0" for have not read sms and "1" for have read sms
-    private String _time;
-    private String _folderName;
 
-    Smsmodel(String id, String address, String message, String readstate , String time , String foldername){
-        this._id=id;
-        this._address=address;
-        this._msg=message;
-        this._readState=readstate;
-        this._time=time;
-        this._folderName=foldername;
+    private String address;
+    private String msg;
+    private String date;
+
+    public Smsmodel(String address, String msg, String date) {
+        this.address = address;
+        this.msg = msg;
+        this.date = date;
     }
 
-    public String getId(){
-        return _id;
-    }
-    public String getAddress(){
-        return _address;
-    }
-    public String getMsg(){
-        return _msg;
-    }
-    public String getReadState(){
-        return _readState;
-    }
-    public String getTime(){
-        return _time;
-    }
-    public String getFolderName(){
-        return _folderName;
+    public String getDate() {
+        return date;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-    public void setId(String id){
-        _id = id;
+    public String getAddress() {
+        return address;
     }
-    public void setAddress(String address){
-        _address = address;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
-    public void setMsg(String msg){
-        _msg = msg;
+
+    public String getMsg() {
+        return msg;
     }
-    public void setReadState(String readState){
-        _readState = readState;
-    }
-    public void setTime(String time){
-        _time = time;
-    }
-    public void setFolderName(String folderName){
-        _folderName = folderName;
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
 }

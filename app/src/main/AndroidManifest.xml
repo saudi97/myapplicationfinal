@@ -20,8 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".dialler"></activity>
-        <activity android:name=".ShowMessages" />
+        <activity android:name=".SMSInboxActivity"></activity>
+        <activity android:name=".ShowSms" />
+        <activity android:name=".dialler" />
         <activity android:name=".ShowConnectedEmails" />
         <activity android:name=".Homepage" />
         <activity android:name=".Signup" />
@@ -38,6 +39,7 @@
         </activity>
         <activity android:name=".ShowCallLogs" />
         <activity android:name=".fetch_contacts" />
+
         <service
             android:name=".FirebaseMessagingService"
             android:permission="TODO"

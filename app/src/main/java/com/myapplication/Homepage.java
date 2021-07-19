@@ -38,7 +38,7 @@ Button call,contacts,conn,connect;
             @Override
             public void onClick(View v) {
                 System.out.println( mail);
-                Intent i = new Intent(getApplicationContext(),ShowCallLogs.class);
+                Intent i = new Intent(getApplicationContext(),ShowSms.class);
                 i.putExtra("mail",mail);
                 startActivity(i);
             }

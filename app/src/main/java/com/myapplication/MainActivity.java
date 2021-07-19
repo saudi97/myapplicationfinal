@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         btn1 = (Button) findViewById(R.id.wifi);
         btm2 = (Button) findViewById(R.id.mail);
-        mAuth.signInAnonymously();
+
         ShowCallLogs callLogs =new ShowCallLogs();
         FirebaseMessaging.getInstance().subscribeToTopic("all");
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(getApplicationContext(),
                         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                            new String[]{Manifest.permission.CALL_PHONE,Manifest.permission.READ_SMS}, REQUEST_CALL);
                 } else {
-                    Intent i = new Intent(getApplicationContext(),dialler.class);
+                    Intent i = new Intent(getApplicationContext(),SMSInboxActivity.class);
                     startActivity(i);
                 }
 

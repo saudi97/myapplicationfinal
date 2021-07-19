@@ -67,7 +67,7 @@ public class ShowCallLogs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_show_call_logs);
-        getSupportActionBar().setTitle("Call Logs");
+    //    getSupportActionBar().setTitle("Call Logs");
 Intent i = getIntent();
 mail= i.getStringExtra("mail");
         //Initialize our views and variables
