@@ -5,16 +5,19 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -42,6 +45,8 @@ public class logfragment extends Fragment {
     private ProgressDialog mProgressDialog;
     private CallLogAdapter callLogAdapter;
     String mail;
+    Button btn1;
+    TextView text;
     int index;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     public String str_number, str_contact_name, str_call_type, str_call_full_date,
@@ -73,7 +78,10 @@ public class logfragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
          View root= inflater.inflate(R.layout.fragment_logfragment, container, false);
+         View inflatedview=inflater.inflate(R.layout.layout_call_log,container,false);
         Intent i = getActivity().getIntent();
+        btn1=inflatedview.findViewById(R.id.call_button1);
+        text=inflatedview.findViewById(R.id.layout_call_log_ph_no);
         mail= i.getStringExtra("mail");
         //Initialize our views and variables
         swipeRefreshLayout = root.findViewById(R.id.activity_main_swipe_refresh_layout);
@@ -88,6 +96,14 @@ public class logfragment extends Fragment {
         if(CheckAndRequestPermission()){
             FetchCallLogs();
         }
+        CallLogModel callitems=new CallLogModel(str_number, str_contact_name, str_call_type,
+                str_call_date, str_call_time, str_call_duration);
+        btn1.setOnClickListener(v -> {
+            String dial = "tel:"+callitems.getPhNumber().toString();
+           startActivity(new Intent( Intent.ACTION_CALL,Uri.parse(dial)));
+        });
+
+
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -203,11 +219,13 @@ public class logfragment extends Fragment {
             callLogItem = new CallLogModel(str_number, str_contact_name, str_call_type,
                     str_call_date, str_call_time, str_call_duration);
             callLogModelArrayList.add(callLogItem);
-            SendDataToServer(callLogItem);
+            System.out.println("Phone number working");
+        //    SendDataToServer(callLogItem);
 
         }
         callLogAdapter.notifyDataSetChanged();
     }
+
     private String getFormatedDateTime(String dateStr, String strInputFormat, String strOutputFormat) {
         String formattedDate = dateStr;
         DateFormat inputFormat = new SimpleDateFormat(strInputFormat, Locale.getDefault());
