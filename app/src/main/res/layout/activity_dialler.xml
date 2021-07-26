@@ -29,9 +29,9 @@
                 android:background="@drawable/rounded"
                 android:drawableLeft="@drawable/ic_call"
                 android:ems="10"
-                android:focusableInTouchMode="false"
                 android:hint="@string/hint"
                 android:inputType="none"
+                android:focusableInTouchMode="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textSize="24sp"
                 android:textStyle="bold" />
