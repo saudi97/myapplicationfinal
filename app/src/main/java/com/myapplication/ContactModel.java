@@ -1,6 +1,7 @@
 package com.myapplication;
 
-public class ContactModel {
+public class
+ContactModel {
     //initialize variable
     String name, number;
     //getter and setter

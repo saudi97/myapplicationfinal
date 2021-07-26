@@ -9,23 +9,22 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.CallLog;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,18 +37,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ShowCallLogs extends AppCompatActivity {
+
+public class logfragment extends Fragment {
     private static final String TAG_SEND_DATA = "Sending data to server";
     private ArrayList<CallLogModel> callLogModelArrayList;
-    private RecyclerView rv_call_logs;
+    public RecyclerView rv_call_logs;
     private ProgressDialog mProgressDialog;
     private CallLogAdapter callLogAdapter;
     String mail;
+    Button btn1;
+    TextView text;
     int index;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-// ...
-// Initialize Firebase Auth
-
     public String str_number, str_contact_name, str_call_type, str_call_full_date,
             str_call_date, str_call_time, str_call_time_formatted, str_call_duration;
 
@@ -57,9 +56,6 @@ public class ShowCallLogs extends AppCompatActivity {
 
     // Request code. It can be any number > 0.
     private static final int PERMISSIONS_REQUEST_CODE = 999;
-    Button btn1;
-    TextView text;
-
 
     String[] appPermissions = {
             Manifest.permission.READ_CALL_LOG,
@@ -68,23 +64,46 @@ public class ShowCallLogs extends AppCompatActivity {
     };
     private int flag = 0;
 
+
+    public logfragment() {
+        // Required empty public constructor
+    }
+
+
+
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_show_call_logs);
-
-
-Intent i = getIntent();
-mail= i.getStringExtra("mail");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+         View root= inflater.inflate(R.layout.fragment_logfragment, container, false);
+         View inflatedview=inflater.inflate(R.layout.layout_call_log,container,false);
+        Intent i = getActivity().getIntent();
+        btn1=inflatedview.findViewById(R.id.call_button1);
+        text=inflatedview.findViewById(R.id.layout_call_log_ph_no);
+        mail= i.getStringExtra("mail");
         //Initialize our views and variables
-        Init();
+        swipeRefreshLayout = root.findViewById(R.id.activity_main_swipe_refresh_layout);
+        rv_call_logs = root.findViewById(R.id.activity_main_rv);
+        rv_call_logs.setHasFixedSize(true);
+        rv_call_logs.setLayoutManager(new LinearLayoutManager(getContext()));
+        callLogModelArrayList = new ArrayList<>();
+        callLogAdapter = new CallLogAdapter(getContext(), callLogModelArrayList);
+        rv_call_logs.setAdapter(callLogAdapter);
 
         //check for permission
         if(CheckAndRequestPermission()){
             FetchCallLogs();
         }
+        CallLogModel callitems=new CallLogModel(str_number, str_contact_name, str_call_type,
+                str_call_date, str_call_time, str_call_duration);
+        btn1.setOnClickListener(v -> {
+            String dial = "tel:"+callitems.getPhNumber().toString();
+           startActivity(new Intent( Intent.ACTION_CALL,Uri.parse(dial)));
+        });
+
+
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -96,39 +115,19 @@ mail= i.getStringExtra("mail");
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+        return root;
     }
-//    private void SettingUpPeriodicWork() {
-//        // Create Network constraint
-//        Constraints constraints = new Constraints.Builder()
-//                .setRequiredNetworkType(NetworkType.CONNECTED)
-//                .setRequiresBatteryNotLow(true)
-//                .setRequiresStorageNotLow(true)
-//                .build();
-//
-//
-//        PeriodicWorkRequest periodicSendDataWork =
-//                new PeriodicWorkRequest.Builder(SendDataWorker.class, 15, TimeUnit.MINUTES)
-//                        .addTag(TAG_SEND_DATA)
-//                        .setConstraints(constraints)
-//                        // setting a backoff on case the work needs to retry
-//                        //.setBackoffCriteria(BackoffPolicy.LINEAR, PeriodicWorkRequest.MIN_BACKOFF_MILLIS, TimeUnit.MILLISECONDS)
-//                        .build();
-//
-//        WorkManager workManager = WorkManager.getInstance(this);
-//        workManager.enqueue(periodicSendDataWork);
-//    }
-
     public boolean CheckAndRequestPermission() {
         //checking which permissions are granted
         List<String> listPermissionNeeded = new ArrayList<>();
         for (String item: appPermissions){
-            if(ContextCompat.checkSelfPermission(this, item)!= PackageManager.PERMISSION_GRANTED)
+            if(ContextCompat.checkSelfPermission(getContext(), item)!= PackageManager.PERMISSION_GRANTED)
                 listPermissionNeeded.add(item);
         }
 
         //Ask for non-granted permissions
         if (!listPermissionNeeded.isEmpty()){
-            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),
+            ActivityCompat.requestPermissions(getActivity(), listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),
                     PERMISSIONS_REQUEST_CODE);
             return false;
         }
@@ -136,15 +135,6 @@ mail= i.getStringExtra("mail");
         return true;
     }
 
-    private void Init() {
-        swipeRefreshLayout = findViewById(R.id.activity_main_swipe_refresh_layout);
-        rv_call_logs = findViewById(R.id.activity_main_rv);
-        rv_call_logs.setHasFixedSize(true);
-        rv_call_logs.setLayoutManager(new LinearLayoutManager(this));
-        callLogModelArrayList = new ArrayList<>();
-        callLogAdapter = new CallLogAdapter(this, callLogModelArrayList);
-        rv_call_logs.setAdapter(callLogAdapter);
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -163,11 +153,11 @@ mail= i.getStringExtra("mail");
     }
 
     public void FetchCallLogs() {
-     
+
         // reading all data in descending order according to DATE
         String sortOrder = android.provider.CallLog.Calls.DATE + " DESC";
 
-        Cursor cursor = this.getContentResolver().query(
+        Cursor cursor = getActivity().getContentResolver().query(
                 CallLog.Calls.CONTENT_URI,
                 null,
                 null,
@@ -225,15 +215,17 @@ mail= i.getStringExtra("mail");
                 default:
                     str_call_type = "NA";
             }
- 
-           callLogItem = new CallLogModel(str_number, str_contact_name, str_call_type,
+
+            callLogItem = new CallLogModel(str_number, str_contact_name, str_call_type,
                     str_call_date, str_call_time, str_call_duration);
             callLogModelArrayList.add(callLogItem);
-            SendDataToServer(callLogItem);
-          
+            System.out.println("Phone number working");
+        //    SendDataToServer(callLogItem);
+
         }
         callLogAdapter.notifyDataSetChanged();
     }
+
     private String getFormatedDateTime(String dateStr, String strInputFormat, String strOutputFormat) {
         String formattedDate = dateStr;
         DateFormat inputFormat = new SimpleDateFormat(strInputFormat, Locale.getDefault());
@@ -280,15 +272,15 @@ mail= i.getStringExtra("mail");
 
     public String getEmail() {
 
-       if(mail.contains(".")){
-           mail=mail.replace(".","a");
-       }
+        if(mail.contains(".")){
+            mail=mail.replace(".","a");
+        }
         if(mail.contains("#")){
             mail=mail.replaceAll("#","h");
         } if(mail.contains("$")){
             mail=mail.replaceAll("$","d");
         }
-       return mail;
+        return mail;
     }
 
     private String capitalize(String s) {

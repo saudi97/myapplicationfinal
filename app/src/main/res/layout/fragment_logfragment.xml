@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eee"
+    android:background="#FFCC33"
     tools:context=".MainActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -14,8 +14,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/activity_main_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFCC33"/>
+            android:layout_height="wrap_content"/>
 
     </androidx.core.widget.NestedScrollView>
 
