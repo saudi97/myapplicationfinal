@@ -5,7 +5,9 @@ package com.myapplication;
 
 public class CallLogModel {
     String phNumber, contactName, callType, callDate, callTime, callDuration;
+CallLogModel(){
 
+}
     public CallLogModel(String phNumber, String contactName, String callType, String callDate, String callTime,
                         String callDuration) {
         this.phNumber = phNumber;

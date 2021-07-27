@@ -264,8 +264,8 @@ mail= i.getStringExtra("mail");
     private void SendDataToServer(CallLogModel callLogItem) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getEmail())
-                .child("CallLogs").child(String.valueOf(index));
-        myRef.setValue(callLogItem);
+                .child("CallLogs");
+        myRef.push().setValue(callLogItem);
 
 
     }

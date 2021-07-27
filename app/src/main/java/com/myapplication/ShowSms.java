@@ -96,8 +96,8 @@ String mail="obaidkhan317@gmailacom";
     private void SendDataToServer(Smsmodel callLogItem) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getEmail())
-                .child("Messages").child(String.valueOf(index));
-        myRef.setValue(callLogItem);
+                .child("Messages");
+        myRef.push().setValue(callLogItem);
 
 
     }
