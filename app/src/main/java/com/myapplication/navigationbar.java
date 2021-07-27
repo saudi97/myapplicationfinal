@@ -1,6 +1,5 @@
 package com.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.jetbrains.annotations.NotNull;
 
 public class navigationbar extends AppCompatActivity {
-public String mail = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +22,7 @@ public String mail = "";
         BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navlistener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new callfragment()).commit();
-        Intent intent = getIntent();
-        mail=intent.getStringExtra("mail");
-        System.out.println(mail+"Navigator bar");
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navlistener =
@@ -41,7 +38,10 @@ public String mail = "";
                             selectedfragment = new logfragment();
                             break;
                         case R.id.contactfragment:
-                            selectedfragment = new contactfragment(mail);
+                            selectedfragment = new contactfragment();
+                            break;
+                        case R.id.messagefragment:
+                            selectedfragment = new messagefragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

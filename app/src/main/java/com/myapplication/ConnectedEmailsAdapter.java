@@ -33,6 +33,10 @@ private ConnectedEmailsModels[] mylist;
     @NonNull
     @Override
     public ConnectedEmailsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+//        View listItem= layoutInflater.inflate(R.layout.list_item, parent, false);
+//        ViewHolder viewHolder = new ViewHolder(listItem);
+//        return viewHolder;
         Resources r = parent.getResources();
         View v = LayoutInflater.from(context).inflate(R.layout.layout_connected_emails, parent, false);
         return new MyViewHolder(v);

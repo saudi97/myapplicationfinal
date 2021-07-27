@@ -29,15 +29,13 @@ import androidx.core.content.ContextCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
 
-
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
     private static final int REQUEST_CALL = 1;
-     NotificationManager mNotificationManager;
+    NotificationManager mNotificationManager;
 
     @Override
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
-        System.out.println("hello"+s);
 
     }
 
@@ -51,7 +49,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         startActivity(i);
 
 
-// playing audio and vibration when user se reques
+//// playing audio and vibration when user se reques
 //        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 //        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
 //        r.play();
@@ -119,8 +117,4 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
 
     }
-
-
 }
-
-

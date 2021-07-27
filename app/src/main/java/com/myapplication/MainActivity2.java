@@ -22,7 +22,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         Intent i= getIntent();
         String number=i.getStringExtra("tel");
-
+ 
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {

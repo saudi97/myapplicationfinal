@@ -14,7 +14,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/activity_main_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="#FFCC33"/>
 
     </androidx.core.widget.NestedScrollView>
 
