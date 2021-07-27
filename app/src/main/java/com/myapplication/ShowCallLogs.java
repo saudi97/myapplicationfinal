@@ -5,9 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.CallLog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -53,6 +57,9 @@ public class ShowCallLogs extends AppCompatActivity {
 
     // Request code. It can be any number > 0.
     private static final int PERMISSIONS_REQUEST_CODE = 999;
+    Button btn1;
+    TextView text;
+
 
     String[] appPermissions = {
             Manifest.permission.READ_CALL_LOG,
@@ -67,7 +74,8 @@ public class ShowCallLogs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_show_call_logs);
-    //    getSupportActionBar().setTitle("Call Logs");
+
+
 Intent i = getIntent();
 mail= i.getStringExtra("mail");
         //Initialize our views and variables

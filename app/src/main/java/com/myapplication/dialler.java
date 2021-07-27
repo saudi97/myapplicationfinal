@@ -48,7 +48,7 @@ Button btndelete;
         btnstar=findViewById(R.id.buttonstar);
         btnzero=findViewById(R.id.buttonzero);
         btnhash=findViewById(R.id.buttonhash);
-        btncall=findViewById(R.id.buttonhash);
+        btncall=findViewById(R.id.buttoncall);
         input=findViewById(R.id.inputnumber);
 
     }
@@ -105,9 +105,26 @@ Button btndelete;
 
     }
     public void call(View v){
-        FcmNotificationsSender fcm = new FcmNotificationsSender("/topics/all","Testing",input.getText().toString() ,getApplicationContext(),dialler.this);
-        fcm.SendNotifications();
-
+        if(input.getText().length()<=3){
+            Toast.makeText(this,"Please Enter the valid Number",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Intent intent=new Intent(Intent.ACTION_CALL);
+            String hash=input.getText().toString();
+            if (hash.contains("#")){
+                hash.replace("#","%23");
+            }
+            intent.setData(Uri.parse("tel:"+ hash ));
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED) {
+                //when permission is not granted
+                //grand permission
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 100);
+            }
+            else{
+                FcmNotificationsSender fcm = new FcmNotificationsSender("/topics/all","Testing",input.getText().toString() ,getApplicationContext(),dialler.this);
+                fcm.SendNotifications();
+                }
+        }
     }
     public void ondelete(View v){
         String text = input.getText().toString();

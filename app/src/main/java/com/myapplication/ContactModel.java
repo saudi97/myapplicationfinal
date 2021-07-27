@@ -1,6 +1,7 @@
 package com.myapplication;
 
-public class ContactModel {
+public class
+ContactModel {
     //initialize variable
     String name, number;
     //getter and setter
@@ -8,9 +9,7 @@ ContactModel(String name,String number){
     this.name=name;
     this.number=number;
 }
-    ContactModel(){
 
-    }
     public String getName() {
         return name;
     }
