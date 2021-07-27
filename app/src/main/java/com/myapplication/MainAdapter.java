@@ -30,6 +30,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         View view= LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_contact,parent,false);
         //return view
+        System.out.println("oncreate viewholder");
         return new ViewHolder(view);
     }
 

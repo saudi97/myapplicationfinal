@@ -134,10 +134,10 @@ mail= i.getStringExtra("mail");        //assign variable
     private void SendDataToServer(ContactModel contactItem) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getEmail())
-                .child("Contacts").child(String.valueOf(index));
-        myRef.setValue(contactItem);
-        DatabaseReference ref =database.getReference(getEmail()).child("Device Name");
-        ref.setValue(getDeviceName());
+                .child("Contacts");
+        myRef.push().setValue(contactItem);
+
+
 
 
     }

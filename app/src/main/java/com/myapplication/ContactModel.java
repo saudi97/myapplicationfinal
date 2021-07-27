@@ -8,7 +8,9 @@ ContactModel(String name,String number){
     this.name=name;
     this.number=number;
 }
+    ContactModel(){
 
+    }
     public String getName() {
         return name;
     }

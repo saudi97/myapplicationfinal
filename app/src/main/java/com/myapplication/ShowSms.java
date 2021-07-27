@@ -69,8 +69,7 @@ String mail="obaidkhan317@gmailacom";
             address = cursor.getString(1);
             message = cursor.getString(3);
             SimpleDateFormat dateFormatter = new SimpleDateFormat("dd MMM yyyy");
-            String    date = dateFormatter.format(new Date(Long.parseLong((cursor.getString(2)).toString())));
-
+            String date = dateFormatter.format(new Date(Long.parseLong((cursor.getString(2)).toString())));
             smsmodel = new Smsmodel(address,message,date);
             smsmodelArrayList.add(smsmodel);
 
